@@ -6,8 +6,8 @@ import java.util.Scanner;
 public class MapInit {
 
     String filePath = "src/board_init.txt";
-
-    char board[][] = new char[10][10];
+    String line;
+    char board[][] = new char[100][100];
 
     public void readFile() {
 
@@ -17,8 +17,10 @@ public class MapInit {
             Scanner scanner = new Scanner(fileInputStream);
             int currentLine = 0;
             while (scanner.hasNextLine()) {
-                for (int j = 0; j < scanner.nextLine().length(); j++) {
-                    board[currentLine][j] = scanner.nextLine().charAt(j+ currentLine*j);
+
+                line = scanner.nextLine();
+                for (int j = 0; j < line.length(); j++) {
+                    board[currentLine][j] = line.charAt(j);
                 }
                 currentLine++;
             }
@@ -35,7 +37,7 @@ public class MapInit {
         for (int row = 0; row < 10; row++)
             for (int col = 0; col < 10; col++) {
                 System.out.println(board[row][col]);
-        }
+            }
 
     }
 
@@ -43,7 +45,7 @@ public class MapInit {
         //board[x][y] = 'L';
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
-                System.out.print(board[i][j]+" ");
+                System.out.print(board[i][j] + " ");
             }
             System.out.println();
         }
